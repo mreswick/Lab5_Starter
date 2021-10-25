@@ -1,10 +1,12 @@
 // expose.js
 
+// for window load:
 window.addEventListener('DOMContentLoaded', init);
 
 // confetti:
 const jsConfetti = new JSConfetti();
 
+// called once at start:
 function init() {
   // TODO
   // img for horn:
@@ -24,6 +26,7 @@ function init() {
 
 }
 
+// volume for horn handler:
 function volHornAudio() {
   // vol img icon:
   let volIcon = document.querySelector("div img");
@@ -48,22 +51,19 @@ function volHornAudio() {
     audioHorn.volume = 1.0;
   }
 
-  // console.log("Volume selected: ", audioHorn.volume);
-
 }
 
-
+// handle playing the audio:
 function playAudio() {
+  // get audio and selection:
   let audioHorn = document.querySelector("audio.hidden");
   let selectHorn = document.getElementById("horn-select");
   let selection = selectHorn.value;
-  //console.log(audioHorn);
-  //console.log(audioHorn.getAttribute("class"));
-  // if(audioHorn.src != "" && audioHorn.src != null) {
+ 
+  // play audio only if selection made:
   if(audioHorn.getAttribute("src") != "") {
-    //console.log("Audio horn playing:", audioHorn.src);
-    //console.log(audioHorn.class);
     audioHorn.play();
+    // play with confetti if party-horn selected:
     if(selection == "party-horn") {
       jsConfetti.addConfetti();
     }
@@ -71,9 +71,8 @@ function playAudio() {
   
 }
 
+// handle seleciton of audio:
 function selectHornAudio() {
-  // console.log("You selected: ", this.value);
-  
   // get elements
   let audioHorn = document.querySelector("audio.hidden");
   let selectHorn = document.getElementById("horn-select");
@@ -89,10 +88,8 @@ function selectHornAudio() {
   }
 }
 
-
+// handle img selection for selected horn:
 function selectHornListener() {
-  // console.log("You selected: ", this.value);
-
   // get elements
   let imgHorn = document.querySelector("section img");
   let selectHorn = document.getElementById("horn-select");
