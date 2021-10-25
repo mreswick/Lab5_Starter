@@ -31,6 +31,8 @@ function volHornAudio() {
   // vol img icon:
   let volIcon = document.querySelector("div img");
 
+
+
   // audio:
   let audioHorn = document.querySelector("audio.hidden");
 
@@ -59,21 +61,22 @@ function playAudio() {
   let audioHorn = document.querySelector("audio.hidden");
   let selectHorn = document.getElementById("horn-select");
   let selection = selectHorn.value;
- 
-  // get  audio volume:
-  let vol = audioHorn.value;
 
-  console.log("volume: ", vol);
+  // volume for audio:
+  let volHorn = document.getElementById("volume");
+
+   // get  audio volume:
+   let vol = volHorn.value;
 
   // play audio only if selection made:
   if(audioHorn.getAttribute("src") != "") {
     audioHorn.play();
-    // play with confetti if party-horn selected:
+    // play with confetti if party-horn selected
+    // and volume isn't zero:
     if(selection == "party-horn" && vol != 0.0) {
       jsConfetti.addConfetti();
     }
   }
-  
 }
 
 // handle seleciton of audio:
