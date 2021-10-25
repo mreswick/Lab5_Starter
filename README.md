@@ -9,7 +9,7 @@ Please note that I completed this lab individually, without a partner.
 ## Expose:
 The code for expose is in scripts/explore.js.
 
-The link to the expose.html page is:
+The link to the expose.html page is: [expose.html page.](https://mreswick.github.io/Lab5_Starter/expose.html)
 
 ## Explore:
 The code for explore is in scripts/explore.js.
