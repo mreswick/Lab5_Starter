@@ -61,7 +61,6 @@ function playAudio() {
   let selection = selectHorn.value;
  
   // get  audio volume:
-  let audioHorn = document.querySelector("audio.hidden");
   let vol = audioHorn.value;
 
   console.log("volume: ", vol);
