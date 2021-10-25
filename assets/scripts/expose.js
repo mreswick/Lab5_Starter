@@ -60,11 +60,15 @@ function playAudio() {
   let selectHorn = document.getElementById("horn-select");
   let selection = selectHorn.value;
  
+  // get  audio volume:
+  let audioHorn = document.querySelector("audio.hidden");
+  let vol = audioHorn.value;
+
   // play audio only if selection made:
   if(audioHorn.getAttribute("src") != "") {
     audioHorn.play();
     // play with confetti if party-horn selected:
-    if(selection == "party-horn") {
+    if(selection == "party-horn" && vol != 0.0) {
       jsConfetti.addConfetti();
     }
   }
