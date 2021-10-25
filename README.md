@@ -1,1 +1,18 @@
 # Lab 5 - Starter
+## Lab Completion Info:
+Misha Reswick
+A15994771
+
+Please note that I completed this lab individually, without a partner.
+
+## Expose:
+The code for expose is in scripts/explore.js.
+
+## Explore:
+The code for explore is in scripts/explore.js.
+Note that an extra call and some added time delay
+were needed to get the list of voices to load.
+
+The link for the GitHub actions course is at:
+https://github.com/mreswick/github-actions-for-ci/issues/7 
+
