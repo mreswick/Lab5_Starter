@@ -20,6 +20,8 @@ The link for the GitHub actions' course's last issue is at:
 https://github.com/mreswick/github-actions-for-ci/issues/7 
 This is the "Congratulations" issue. Also, all 18 items
 for the course have shown as completed.
+(Additinally, just in case, the url to the repo for the course
+is: https://github.com/mreswick/github-actions-for-ci.)
 
 The link to the explore.html page is: [explore.html page.](https://mreswick.github.io/Lab5_Starter/explore.html)
 
