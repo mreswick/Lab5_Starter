@@ -64,6 +64,8 @@ function playAudio() {
   let audioHorn = document.querySelector("audio.hidden");
   let vol = audioHorn.value;
 
+  console.log("volume: ", vol);
+
   // play audio only if selection made:
   if(audioHorn.getAttribute("src") != "") {
     audioHorn.play();
