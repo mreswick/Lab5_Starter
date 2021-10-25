@@ -22,4 +22,3 @@ This is the "Congratulations" issue. Also, all 18 items
 for the course have shown as completed.
 
 The link to the explore.html page is: [explore.html page.](https://mreswick.github.io/Lab5_Starter/explore.html)
-
