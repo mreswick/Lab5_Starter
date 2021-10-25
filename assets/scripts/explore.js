@@ -1,12 +1,16 @@
 // explore.js
 
+// on load: 
 window.addEventListener('DOMContentLoaded', init);
+
+// global vars:
 let speechSynth = ""; 
 let voiceSelect = "";
 let voices = [];
 let inputText = "";
 let buttonTalk = "";
 
+// called once at start:
 function init() {
   // TODO
   speechSynth = window.speechSynthesis;
@@ -20,12 +24,11 @@ function init() {
     speechSynth.onvoiceschanged = () => speechSynth.getVoices();
   }
 
-  console.log("speechSynth: ", speechSynth);
+  // load voices
   getVoiceList();
 
-  setTimeout(createSelectionVoiceList, 500);
-
-  
+  // set delay for creating list with voices
+  setTimeout(createSelectionVoiceList, 50);
 
   // add event listener to button:
   buttonTalk = document.getElementsByTagName("button")[0];
@@ -33,10 +36,13 @@ function init() {
  
 }
 
+// update/transition speaking/smiling face:
 function updateFace() {
+  // get face
   let imgFace = document.getElementsByTagName("img")[0];
   let imgFaceSrc = imgFace.getAttribute("src");
 
+  // swap face image
   if(imgFaceSrc == "assets/images/smiling.png") {
     imgFace.src = "assets/images/smiling-open.png";
   } else {
@@ -44,32 +50,30 @@ function updateFace() {
   }
 }
 
+// button event handler:
 function buttonPressed() {
-  console.log("In buttonPressed().");
   // get textarea:
   inputText = document.getElementById("text-to-speak");
-  console.log("inputText value: ", inputText.value);
 
+  // get speech synthesis:
   let textToSay = new SpeechSynthesisUtterance(inputText.value);
-  console.log("textToSay: ", textToSay);
 
   // Needed to get name selected, not entire entry 
   // for language selected:
   // let selectedOption = voiceSelect.value;
   // console.log("selectedOption: ", selectedOption);
+  // hence the below.
 
+  // get selected option:
   let selectedOption = voiceSelect.selectedOptions[0].getAttribute("value");
-  console.log("selectedOption: ", selectedOption);
 
+  // find selected voice:
   for(let i = 0; i < voices.length ; i++) {
     if(voices[i].name === selectedOption) {
-      console.log("entered if for voice choice.");
       textToSay.voice = voices[i];
       break;
     }
   }
-
-  console.log("voice to use, textToSay.voice: ", textToSay.voice);
 
   // just below doesn't work as selectedOption here is 
   // a string, not the desired speech-related type
@@ -81,14 +85,16 @@ function buttonPressed() {
   textToSay.onstart = function() {
     updateFace();
   }
-  
+
+  // start speaking a new utterance only if
+  // not already speaking / have finished speaking:
   if(!speechSynth.speaking)
   {
     speechSynth.speak(textToSay);
   }
 
+  // turn to just smiley(-closed) after done speaking:
   textToSay.onend = function() {
-    // turn to just smiley(-closed) after done speaking:
     updateFace();
   }
 
@@ -99,22 +105,21 @@ function buttonPressed() {
   // updateFace();
 }
 
+// load voices:
 function getVoiceList() {
-  console.log("In getVoiceList():");
   voices = speechSynth.getVoices();
-  // console.log("voices: ", voices);
 }
 
+// create selection list with voices:
 function createSelectionVoiceList() {
+  // load voices:
   getVoiceList();
-  console.log("voices: ", voices);
 
   voiceSelect = document.querySelector("#voice-select");
-  console.log("voiceSelect val: ", voiceSelect);
 
+  // add options for voices to selection list:
   let option = "";
   for(let i = 0; i < voices.length; i++) {
-    // console.log("In for loop, i: ", i);
     option = document.createElement("option");
     option.textContent = voices[i].name + " (" 
       + voices[i].lang + ")";
